@@ -1,31 +1,22 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 
-const Navbar = ()=> {
+const Navbar = ({canvas,ctx})=> {
+        function clearCanvas() {
+                console.log(canvas, ctx)
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                var w = canvas.width;
+                canvas.width = 1;
+                canvas.width = w;
+              }
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>Stroky Brush</Typography>
-          <Button color="inherit">Sketch</Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
+        <nav className="navbar">
+                <h1 className='brand'>Stroky Brush</h1>
+                <div className='nav-items'>
+                        <button>Download</button>
+                        <button>Get Link</button>
+                        <button onClick={clearCanvas}>Reset</button>
+                </div>
+        </nav>
   );
 }
 
