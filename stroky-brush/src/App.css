@@ -50,3 +50,18 @@ body{
         height: 70vh;
         border: 10px solid black;
 }
+button {
+        all: unset;
+}
+      
+.button{
+        font-size: 20px;
+        padding:5px 20px;     
+        color:aliceblue;   
+}
+.button:hover{
+        background-color: aliceblue;
+        color: navy;
+        cursor: pointer;
+        border-radius: 10px;
+}
