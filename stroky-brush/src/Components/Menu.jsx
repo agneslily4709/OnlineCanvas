@@ -6,7 +6,6 @@ const Menu = ({ setLineColor, setLineWidth,
 	return ( 
 		<div className="Menu"> 
                 <div className="menu-item">
-
                 <label>Brush Color </label> 
 			<input type="color"onChange={(e) => {setLineColor(e.target.value); }} /> 
                 </div>
