@@ -15,7 +15,7 @@ const Menu = ({ setLineColor, setLineWidth,
                 </div>
                 <div className="menu-item">
                         <label>Brush Opacity</label> 
-			<input type="range"min="1"max="100"onChange={(e) => { 	setLineOpacity(e.target.value / 100); }} />
+			<input type="range"min="0"max="1"  step={0.1}defaultValue={1}onChange={(e) => { 	setLineOpacity(e.target.value); }} />
                 </div>
 		</div> 
 	); 
