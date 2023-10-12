@@ -8,6 +8,7 @@ function App() {
     const ctxRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
     const [lineWidth, setLineWidth] = useState(5);
+    const [isEraser,setIsEraser] = useState(false)
     const [lineColor, setLineColor] = useState("black");
     const [lineOpacity, setLineOpacity] = useState(0.1);
     const startDrawing = (e) => {
@@ -29,17 +30,24 @@ function App() {
         ctxRef.current.stroke();
     };
 
-    useEffect(() => { 
-        let canvas = canvasRef.current; 
-
-        let ctx = canvas.getContext("2d"); 
-        ctx.lineCap = "round"; 
-        ctx.lineJoin = "round"; 
-        ctx.globalAlpha = lineOpacity; 
-        ctx.strokeStyle = lineColor; 
-        ctx.lineWidth = lineWidth; 
-        ctxRef.current = ctx; 
-    }, [lineColor, lineOpacity, lineWidth]);
+    useEffect(() => {
+        let canvas = canvasRef.current;
+        let ctx = canvas.getContext("2d");
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+    
+        if (isEraser) {
+            ctx.globalCompositeOperation = "destination-out";
+            ctx.lineWidth = lineWidth;  // Set eraser width (similar to line width)
+        } else {
+            ctx.globalCompositeOperation = "source-over";
+            ctx.strokeStyle = lineColor;
+            ctx.globalAlpha = lineOpacity;
+            ctx.lineWidth = lineWidth;
+        }
+    
+        ctxRef.current = ctx;
+    }, [isEraser, lineColor, lineOpacity, lineWidth]);
 
     return (
         <div className="App">
@@ -48,6 +56,8 @@ function App() {
                 setLineColor={setLineColor}
                 setLineWidth={setLineWidth}
                 setLineOpacity={setLineOpacity}
+                setIsEraser={setIsEraser}
+                isEraser={isEraser}
             />
             <div className="canvas">
             <canvas 
@@ -55,7 +65,7 @@ function App() {
                     onMouseUp={endDrawing} 
                     onMouseMove={draw} 
                     ref={canvasRef} 
-                    width={`1480px`} 
+                    width={`1650px`} 
                     height={`720px`} 
                 /> 
             </div>
