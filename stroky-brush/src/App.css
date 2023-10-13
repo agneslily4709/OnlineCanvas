@@ -27,9 +27,9 @@ body{
         color: aliceblue;
 }
 .Menu{
-        display: flex;
+        display: grid;
+        grid-template-columns: 200px 200px 200px 200px;
         justify-content: center;
-        align-items: center;
         gap: 3rem;
 }
 .menu-item{
@@ -65,3 +65,37 @@ button {
         cursor: pointer;
         border-radius: 10px;
 }
+@media only screen and (max-width: 412px) {
+        .navbar{
+                padding: 10px;
+        }
+        .nav-items{
+                gap: 1rem;
+        }
+        .brand{
+                font-size: 25px;
+        }
+        .Menu{
+        display: grid;
+        grid-template-rows: 75px 75px;
+        grid-template-columns: auto auto;
+        justify-content: center;
+        gap: 2px;
+}
+.menu-item{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        font-size: 15px;
+        border: 2px solid navy;
+        height: 35px;
+        background-color: aliceblue;
+        }
+        .canvas{
+                margin: 20px;
+                cursor:crosshair;
+                height: 60vh;
+                border: 10px solid black;
+        }
+      }
